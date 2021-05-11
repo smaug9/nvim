@@ -1,0 +1,34 @@
+set expandtab
+set ruler
+set number
+set tabstop=2
+set shiftwidth=2
+set autoindent
+set noerrorbells visualbell t_vb=
+
+" Install vim-plug if not found
+if empty(glob('~/.config/nvim/autoload/plug.vim'))
+  silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+endif
+
+" Run PlugInstall if there are missing plugins
+autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
+  \| PlugInstall --sync | source $MYVIMRC
+\| endif
+
+" Vim-Plug
+" --------
+call plug#begin('~/.config/nvim/plugged')
+    Plug 'airblade/vim-gitgutter'
+    Plug 'pprovost/vim-ps1'
+   " Plug 'https://github.com/danro/rename.vim.git'
+   " Plug 'itchyny/lightline.vim'
+   " Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+   " Plug 'https://github.com/PProvost/vim-ps1.git'
+   " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+   " Plug 'scrooloose/nerdcommenter'
+   " Plug 'robin1996/posh-ab'
+   " Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
+   " Plug 'zchee/deoplete-go', { 'do': 'make' }
+call plug#end()
